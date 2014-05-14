@@ -38,8 +38,14 @@ class Ajuda(Base_Command.Base_Command):
 						self.parent.conn.privmsg(self.channel, '%s' % ('!add mulher link da mulher'))
 					if self.args[1] == 'quote':
 						self.parent.conn.privmsg(self.channel, '%s' % ('!add quote frase'))
-					if self.args[1] == 'goatrance':
+					if self.args[1] == 'xinga':
 						self.parent.conn.privmsg(self.channel, '%s' % ('!add xinga frase'))
+				else:
+					self.parent.conn.privmsg(self.channel, '%s' % ('-- ajudas disponiveis --'))
+					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add goatrance'))
+					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add mulher'))
+					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add quote'))
+					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add xinga'))
 		
 
 
