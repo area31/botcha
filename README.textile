@@ -8,13 +8,17 @@ sqlite3</code></pre>
 
 Botcha uses some python libraries:
 
-<pre><code>python-irclib
-python-beautifulsoup
-python-mechanize
-python-httplib2
-python-lxml</code></pre>
+<pre><code>dev-python/irclib
+dev-python/httplib2
+dev-python/beautifulsoup
+dev-python/mechanize
+dev-python/lxml</code></pre>
 
 h2. Installation:
+
+<pre><code>echo 'PYTHON_ABIS="2.6"' >> /etc/make.conf</code></pre>
+
+<pre><code>emerge dev-db/sqlite dev-lang/python:2.6 dev-python/httplib2 dev-python/beautifulsoup dev-python/mechanize dev-python/lxml</code></pre>
 
 <pre><code>useradd -m morfetico
 su - morfetico</code></pre>
