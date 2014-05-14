@@ -8,7 +8,7 @@ class Ipinfo(Base_Command.Base_Command):
 
     def ipinfo(self):
         web = Web()
-        uri = 'http://whatismyipaddress.com/ip/'
+        uri = 'http://ip.nixdns.com.br/plain/'
         answer = web.html(web.get(uri + self.args[0]))
 
         if answer:

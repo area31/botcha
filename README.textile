@@ -4,15 +4,32 @@ Botcha is an python irc bot
 
 h2. Requirements
 
-Botcha uses some python libraries, so, on debian systems type:
+Botcha uses some python libraries:
 
-<pre><code>apt-get install python-irclib python-beautifulsoup python-mechanize python-httplib2 python-lxml sqlite3</code></pre>
+<pre><code>python-2.6 (only)
+python-irclib
+python-beautifulsoup
+python-mechanize
+python-httplib2
+python-lxml
+sqlite3</code></pre>
 
 h2. Installation
 
-<pre><code>git clone https://github.com/but3k4/botcha
+<pre><code>git clone https://github.com/area31/botcha
 cd botcha
 mkdir log
 sqlite db/sqlite.db < db/schema.sql
 vim conf/lokky.cfg
 python bot.py</code></pre>
+
+ou
+
+<pre><code>chmod +x start.sh && ./start.sh</code></pre>
+
+Caso Você possua um sistema Gentoo ou Funtoo, adicione o init default.
+
+<pre><code>cp init-d-gentoo-funtoo-botcha /etc/init.d/botcha
+chmod +x /etc/init.d/botcha
+rc-update add botcha</code></pre>
+

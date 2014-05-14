@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+need netif.eth0
+
+
+}
+
+start() {
+su morfetico -c /home/morfetico/botcha/start.sh
+
+}
+
+stop() {
+CHECK=$(pgrep -u morfetico python2.6|wc -l)
+if [ "$CHECK" -ne 0 ]; then
+kill -9 $(pgrep -u morfetico python2.6)
+fi
+
+}
+
+status() {
+echo -e "Processos rodando:\n $(pgrep -u morfetico python2.6)\n"
+}

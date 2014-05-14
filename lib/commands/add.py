@@ -29,6 +29,14 @@ class Add(Base_Command.Base_Command):
             return False
         return True
 
+    def goatrance(self, string):
+        db = Database()
+        try:
+            db.insert('goatrance', string.strip())
+        except:
+            return False
+        return True
+
     def add(self):
         if len(self.args) > 1:
             content = ' '.join(self.args[1:])
@@ -48,9 +56,13 @@ class Add(Base_Command.Base_Command):
                 if result:
                     self.parent.conn.privmsg(self.channel, "%s, gostosa adicionada." % (self.nick))
 
+            if self.args[0] == 'goatrance':
+                result = self.goatrance(content)
+                if result:
+                    self.parent.conn.privmsg(self.channel, "%s, goa trance adicionado." % (self.nick))
 
 	else:
-		self.parent.conn.privmsg(self.channel, "%s, deixa de ser burro." % self.nick)
+		self.parent.conn.privmsg(self.channel, "%s, deixa de ser burro e adiciona alguma coisa direito." % self.nick)
 
     def run(self):
         self.add()
