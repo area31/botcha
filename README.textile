@@ -2,32 +2,38 @@ h1. Botcha Manual
 
 Botcha is an python irc bot
 
-h2. Requirements
+h2. Requirements:
+<pre><code>python-2.6 (only)
+sqlite3</code></pre>
 
 Botcha uses some python libraries:
 
-<pre><code>python-2.6 (only)
-python-irclib
+<pre><code>python-irclib
 python-beautifulsoup
 python-mechanize
 python-httplib2
-python-lxml
-sqlite3</code></pre>
+python-lxml</code></pre>
 
-h2. Installation
+h2. Installation:
+
+<pre><code>useradd -m morfetico
+su - morfetico</code></pre>
 
 <pre><code>git clone https://github.com/area31/botcha
 cd botcha
 mkdir log
 sqlite db/sqlite.db < db/schema.sql
-vim conf/lokky.cfg
-python bot.py</code></pre>
+vim conf/lokky.cfg</code></pre>
 
-ou
+h2. Start Botcha:
+
+<pre><code>python bot.py</code></pre>
+
+or
 
 <pre><code>chmod +x start.sh && ./start.sh</code></pre>
 
-Caso Você possua um sistema Gentoo ou Funtoo, adicione o init default.
+h2. Gentoo or Funtoo, install init:
 
 <pre><code>cp init-d-gentoo-funtoo-botcha /etc/init.d/botcha
 chmod +x /etc/init.d/botcha
