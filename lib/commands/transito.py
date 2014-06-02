@@ -7,17 +7,18 @@ class Transito(Base_Command.Base_Command):
 
     def transito(self):
         web = Web()
-        answerSP = web.html(web.get('http://cetsp1.cetsp.com.br/monitransmapa/agora/'))
-        if answerSP:
+        answer = web.html(web.get('http://cetsp1.cetsp.com.br/monitransmapa/agora/'))
+        if answer:
             dados = {
-                'hora': answerSP.find('div', id="hora").findAll(text=True)[0],
-                'lentidao': answerSP.find('div', id="lentidao").findAll(text=True)[0],
+                'hora': answer.find('div', id="hora").findAll(text=True)[0],
+                'lentidao': answer.find('div', id="lentidao").findAll(text=True)[0],
             }
             result = "%(lentidao)s km de transito em SP, atualizado as %(hora)s" % dados
-	    self.parent.conn.privmsg(self.channel, result)
+            self.parent.conn.privmsg(self.channel, result)
+            self.parent.conn.privmsg(self.channel, '%s' % ('Quer o transito de BH? www.maplink.com.br/MG/belo_horizonte/TransitoAgora '))
+
         else:
             return False
-
 
     def run(self):
         self.transito()

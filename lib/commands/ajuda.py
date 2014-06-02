@@ -7,7 +7,7 @@ class Ajuda(Base_Command.Base_Command):
     def ajuda(self):
 	if len(self.args) < 1:
 		self.parent.conn.privmsg(self.channel, '%s' % ('-- comandos disponiveis --'))
-		self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda  |  !add  |  !chuck  |  !goatrance  |  !mulher  |  !quote  |  !transito  |  !docs  |  !zuera  |  !xinga'))
+		self.parent.conn.privmsg(self.channel, '%s' % ('!add  |  !ajuda  |  !ama  |  !chill  |  !chora  |  !chuck  |  !crypto  |  !docs  |  !goatrance  |  !mulher  |  !noob  |  !politica  |  !quote  |  !rock  |  !transito  |  !xinga  |  !zuera  '))
 	else:
 			if self.args[0] == 'ajuda':
 				self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda nao possui parametros'))				
@@ -23,22 +23,32 @@ class Ajuda(Base_Command.Base_Command):
 				self.parent.conn.privmsg(self.channel, '%s' % ('!transito nao possui parametros'))
 			if self.args[0] == 'xinga':
 				self.parent.conn.privmsg(self.channel, '%s' % ('!xinga nickname'))
+			if self.args[0] == 'ama':
+				self.parent.conn.privmsg(self.channel, '%s' % ('!ama nickname'))
+			if self.args[0] == 'docs':
+				self.parent.conn.privmsg(self.channel, '%s' % ('!docs nao possui parametros'))
 			if self.args[0] == 'add':
 				if len(self.args) > 1:
 					if self.args[1] == 'goatrance':
 						self.parent.conn.privmsg(self.channel, '%s' % ('!add goatrance url'))
 					if self.args[1] == 'mulher':
-						self.parent.conn.privmsg(self.channel, '%s' % ('!add mulher link da mulher'))
+						self.parent.conn.privmsg(self.channel, '%s' % ('!add mulher link da gostosa'))
 					if self.args[1] == 'quote':
 						self.parent.conn.privmsg(self.channel, '%s' % ('!add quote frase'))
 					if self.args[1] == 'xinga':
-						self.parent.conn.privmsg(self.channel, '%s' % ('!add xinga frase'))
+						self.parent.conn.privmsg(self.channel, '%s' % ('!add xingamento frase ofensiva'))
+					if self.args[1] == 'ama':
+						self.parent.conn.privmsg(self.channel, '%s' % ('!add xinga frase amorosa'))
+					if self.args[1] == 'docs':
+						self.parent.conn.privmsg(self.channel, '%s' % ('!add docs link de artigo'))
 				else:
 					self.parent.conn.privmsg(self.channel, '%s' % ('-- ajudas disponiveis --'))
 					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add goatrance'))
 					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add mulher'))
 					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add quote'))
-					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add xinga'))
+					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add xingamento'))
+					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add ama'))
+					self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda add docs'))
 		
 
 
