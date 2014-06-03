@@ -9,7 +9,7 @@ class Chill(Base_Command.Base_Command):
         db = Database()
         self.chill = None
         try:
-            self.chill = db.select('chill', 'chill', 1)[0][0]
+            self.chill = db.select('chilli', 'chilli', 1)[0][0]
         except:
             return False
         if self.chill:
