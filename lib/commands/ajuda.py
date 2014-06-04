@@ -7,7 +7,7 @@ class Ajuda(Base_Command.Base_Command):
     def ajuda(self):
 	if len(self.args) < 1:
 		self.parent.conn.privmsg(self.channel, '%s' % ('-- comandos disponiveis --'))
-		self.parent.conn.privmsg(self.channel, '%s' % ('!add  |  !ajuda  |  !ama  |  !chill  |  !chora  |  !chuck  |  !crypto  |  !docs  |  !goatrance  |  !mulher  |  !noob  |  !politica  |  !quote  |  !rock  |  !transito  |  !xinga  |  !zuera  '))
+		self.parent.conn.privmsg(self.channel, '%s' % ('!add  |  !ajuda  |  !ama  |  !btc  |  !chill  |  !chora  |  !chuck  |  !cotacao  |  !crypto  |  !docs  |  !goatrance  |  !imdb  |  !ipinfo  |  !mulher  |  !noob  |  !politica  |  !quote  |  !rock  |  !transito  |  !weather  |  !xinga  |  !zuera  '))
 	else:
 			if self.args[0] == 'ajuda':
 				self.parent.conn.privmsg(self.channel, '%s' % ('!ajuda nao possui parametros'))				
