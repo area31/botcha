@@ -9,7 +9,7 @@ class Weather(Base_Command.Base_Command):
 
     def weather(self):
         if len(self.args) < 1:
-            place = 'sao paulo sp brazil'
+            place = 'belo horizonte mg brazil'
         else:
             place = ' '.join(self.args[0:])
 
