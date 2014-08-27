@@ -5,6 +5,14 @@ from lib.modules.database import Database
 
 class Add(Base_Command.Base_Command):
 
+    def admin(self, _nick):
+        db = Database()
+        try:
+            db.insert('admins', _nick.strip())
+        except:
+            return False
+        return True
+
     def quote(self, string):
         db = Database()
         try:
@@ -69,6 +77,22 @@ class Add(Base_Command.Base_Command):
             return False
         return True
 
+    def nerdices(self, string):
+        db = Database()
+        try:
+            db.insert('nerdices', string.strip())
+        except:
+            return False
+        return True
+
+    def reggae(self, string):
+        db = Database()
+        try:
+            db.insert('reggae', string.strip())
+        except:
+            return False
+        return True
+
     def chill(self, string):
         db = Database()
         try:
@@ -113,6 +137,16 @@ class Add(Base_Command.Base_Command):
         if len(self.args) > 1:
             content = ' '.join(self.args[1:])
             result = None
+            if self.args[0] == 'admin' and self.check_admin():
+                _db = Database()
+                _nicks = [ nick[0] for nick in _db.select('admin', 'admins') ]
+                if not content in _nicks:
+                    result = self.admin(content)
+                    if result:
+                        self.parent.conn.privmsg(self.channel, "%s, %s adicionado." % (self.nick, self.args[0]))
+                else:
+                    self.parent.conn.privmsg(self.channel, "%s, este usuario ja eh admin." % (self.nick))
+
             if self.args[0] == 'quote':
                 result = self.quote(content)
                 if result:
@@ -152,6 +186,16 @@ class Add(Base_Command.Base_Command):
                 result = self.rock(content)
                 if result:
                     self.parent.conn.privmsg(self.channel, "%s, Rock (vulgo Roque) adicionado." % (self.nick))
+
+            if self.args[0] == 'reggae':
+                result = self.reggae(content)
+                if result:
+                    self.parent.conn.privmsg(self.channel, "%s, Som de maconheiro medicinal adicionado." % (self.nick))
+
+            if self.args[0] == 'nerdices':
+                result = self.nerdices(content)
+                if result:
+                    self.parent.conn.privmsg(self.channel, "%s, Nerdice adicionada seu virje." % (self.nick))
 
             if self.args[0] == 'chill':
                 result = self.chill(content)

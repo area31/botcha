@@ -17,7 +17,7 @@ class Base_Command(object):
             self.admins = [ nick[0] for nick in db.select('admin', 'admins') ]
         except:
             return False
-        return self.name in self.admins
+        return self.nick in self.admins
 
     def __setup__(self):
         pass

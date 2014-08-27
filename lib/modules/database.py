@@ -25,6 +25,22 @@ class Database(object):
         except:
             return False
 
+    def update(self, table, field, value):
+        sql = "UPDATE %s set %s = '%s'" % (table, field, value)
+        try:
+            self.cursor.execute(sql)
+            self.conn.commit()
+        except:
+            return False
+
+    def delete(self, table, field, value):
+        sql = "DELETE FROM %s WHERE %s = '%s'" % (table, field, value)
+        try:
+            self.cursor.execute(sql)
+            self.conn.commit()
+        except:
+            return False
+
     def select(self, field, table, random=0):
         try:
             if random:

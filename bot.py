@@ -17,7 +17,11 @@ from irclib import nm_to_n, nm_to_uh, is_channel
 from lib.modules.logger import Logger
 from lib.modules.daemonize import Daemonize
 
+from lib.modules.database import Database
+
 from lib.modules.edbot import Edbot
+
+from datetime import datetime
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -83,6 +87,7 @@ class Bot(SingleServerIRCBot):
         for channel in self.channel:
             c.join(channel)
         c.privmsg('chanserv', 'set flood_protection off')
+        c.execute_delayed(60, self._crypto, ())
 
     def on_privmsg(self, c, e):
         self.do_command(c, e)
@@ -140,6 +145,28 @@ class Bot(SingleServerIRCBot):
 
         return count
 
+    def _crypto(self):
+        cron = '21:47'
+        _run = False
+        d = datetime.strptime(cron, "%H:%M")
+        if not _run:
+           if datetime.today().hour > str(d).split(':')[0] and datetime.today().minute > str(d).split(':')[1]:
+               try:
+                   _run = True
+                   db = Database()
+                   _hash = db.select('hash', 'crypto')[0][0]
+                   #admins = [ nick[0] for nick in db.select('admin', 'admins') ]
+                   admins = [ 'but3k4' ]
+                   for _nick in admins:
+                       self.conn.privmsg(_nick, '######################################################################')
+                       self.conn.privmsg(_nick, 'Remova a senha antiga:    /delkey #area31')
+                       self.conn.privmsg(_nick, 'Adicione a nova senha:    /setkey ' + _hash)
+               except Exception, e:
+                   _f = open('log/startup.log', 'a')
+                   _f.write("Error: %s" % repr(e))
+                   _f.close()
+        self.conn.execute_delayed(60, self._crypto, ())
+
     def do_command(self, c, e):
         message = e.arguments()[0].strip()
         
@@ -149,7 +176,7 @@ class Bot(SingleServerIRCBot):
             nick = nm_to_n(e.source())
 
             if cmd.startswith('!'):
-                if self.anti_flood(nick, cmd) >= 4:
+                if self.anti_flood(nick, cmd) >= 11:
                     pass
                 else:
                     command = Commands(self, cmd, e)
