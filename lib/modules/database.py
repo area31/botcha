@@ -51,7 +51,6 @@ class Database(object):
             return False
 
         result = self.cursor.fetchall()
-        self.disconect()
 
         if type(result) is not NoneType:
             return result

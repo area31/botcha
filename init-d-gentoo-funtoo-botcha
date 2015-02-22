@@ -1,30 +1,25 @@
 #!/sbin/runscript
 # Distributed under the terms of the GNU General Public License v2
 
-USER="morfetico"
-
 depend() {
-need net
+need netif.eth0
 
 
 }
 
 start() {
-ebegin "Iniciando o Botcha \"${USER}\""
-su ${USER} -c ~${USER}/botcha/start.sh
+su morfetico -c /home/morfetico/botcha/start.sh
 
 }
 
 stop() {
-ebegin "Parando o Botcha \"${USER}\""
-CHECK=$(pgrep -u ${USER} python2.6|wc -l)
+CHECK=$(pgrep -u morfetico python2.6|wc -l)
 if [ "$CHECK" -ne 0 ]; then
-kill -9 $(pgrep -u ${USER} python2.6)
+kill -9 $(pgrep -u morfetico python2.6)
 fi
 
 }
 
 status() {
-ebegin "Processo em execução"
-echo -e "USER: ${USER}\nPID: $(pgrep -u ${USER} python2.6)\n\n$(ps -uwp $(pgrep -u ${USER} python2.6))"
+echo -e "Processos rodando:\n $(pgrep -u morfetico python2.6)\n"
 }

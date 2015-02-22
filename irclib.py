@@ -71,7 +71,7 @@ import time
 import types
 
 VERSION = 0, 4, 8
-DEBUG = 0
+DEBUG = 1
 
 # TODO
 # ----
@@ -379,7 +379,7 @@ class ServerConnection(Connection):
         self.ssl = None
 
     def connect(self, server, port, nickname, password=None, username=None,
-                ircname=None, localaddress="", localport=0, ssl=False, ipv6=True):
+                ircname=None, localaddress="", localport=0, ssl=False, ipv6=False):
         """Connect/reconnect to a server.
 
         Arguments:
@@ -1052,7 +1052,7 @@ class SimpleIRCClient:
         self.dcc_connections.remove(c)
 
     def connect(self, server, port, nickname, password=None, username=None,
-                ircname=None, localaddress="", localport=0, ssl=False, ipv6=True):
+                ircname=None, localaddress="", localport=0, ssl=False, ipv6=False):
         """Connect/reconnect to a server.
 
         Arguments:

@@ -7,7 +7,7 @@ class Noob(Base_Command.Base_Command):
 
     def noob(self):
         if len(self.args) < 1:
-            self.parent.conn.privmsg(self.channel,'%s, deixa de ser burro e noob alguém. ' % self.nick)	
+            self.parent.conn.privmsg(self.channel,'%s, deixa de ser burro e zoa alguém direito. ' % self.nick)	
         else:
             db = Database()
             self.noob = None

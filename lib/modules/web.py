@@ -17,7 +17,7 @@ class Web(object):
         pass
 
     def get(self, url):
-        sock = httplib2.Http(timeout=10)
+        sock = httplib2.Http(timeout=3)
         try:
             headers, response = sock.request(url)
             if headers['status'] in (200, '200'):
