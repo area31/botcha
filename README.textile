@@ -42,3 +42,4 @@ h2. Gentoo or Funtoo, install init:
 <pre><code>cp init-d-gentoo-funtoo-botcha /etc/init.d/botcha
 chmod +x /etc/init.d/botcha
 rc-update add botcha</code></pre>
+
